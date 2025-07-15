@@ -25,14 +25,14 @@ if uploaded_file is not None:
             prompt = f"You are a data analyst. Based on the dataset: {df.head(100).to_csv(index=False)}, summarize key insights, trends, and potential business implications."
             try:
                response = client.chat.completions.create(
-               model="gpt-4",
-               messages=[
-                   {"role": "system", "content": "You are a skilled data analyst."},
-                   {"role": "user", "content": prompt}
-              ],
-             temperature=0.5,
-             max_tokens=500
-             )
+                  model="gpt-4",
+                  messages=[
+                        {"role": "system", "content": "You are a skilled data analyst."},
+                        {"role": "user", "content": prompt}
+                  ],
+                  temperature=0.5,
+                  max_tokens=500
+                )
                 ai_insight = response.choices[0].message.content
                 st.markdown("### 📈 AI-Generated Insights")
                 st.success(ai_insight)
