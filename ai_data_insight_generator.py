@@ -4,7 +4,7 @@ import pandas as pd
 import openai
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+client = openai.OpenAI(api_key=openai_api_key)
 st.set_page_config(page_title="AI Data Insight Generator", layout="wide")
 
 st.title("📊 AI-Powered Data Insight Generator")
@@ -24,8 +24,6 @@ if uploaded_file is not None:
         with st.spinner("Analyzing your dataset with AI..."):
             prompt = f"You are a data analyst. Based on the dataset: {df.head(100).to_csv(index=False)}, summarize key insights, trends, and potential business implications."
             try:
-               client = openai.OpenAI(api_key=openai_api_key)
-
                response = client.chat.completions.create(
                model="gpt-4",
                messages=[
