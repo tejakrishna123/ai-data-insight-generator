@@ -33,8 +33,7 @@ if uploaded_file is not None:
              temperature=0.5,
              max_tokens=500
              )
-             ai_insight = response.choices[0].message.content
-
+                ai_insight = response.choices[0].message.content
                 st.markdown("### 📈 AI-Generated Insights")
                 st.success(ai_insight)
             except Exception as e:
